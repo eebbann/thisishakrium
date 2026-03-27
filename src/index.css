@@ -34,3 +34,88 @@ html, body, #root {
   0%   { background-position: 0 0; }
   100% { background-position: 0 4px; }
 }
+
+/* ── Social link hover ── */
+a[data-cursor]:hover {
+  color: rgba(240,240,238,0.85) !important;
+  border-color: rgba(255,69,0,0.3) !important;
+}
+button.ca-btn:hover {
+  border-color: rgba(255,69,0,0.45) !important;
+}
+
+/* ── Scene layout ── */
+.scene-wrap {
+  position: fixed; inset: 0;
+  display: flex; align-items: center;
+  overflow: hidden; z-index: 10;
+}
+.scene-content {
+  position: relative; z-index: 5;
+  padding-left: clamp(1.5rem, 5vw, 7rem);
+  padding-right: 2rem;
+  display: flex; flex-direction: column;
+  max-width: 660px;
+}
+.hero-visual-svg {
+  position: absolute;
+  right: 0; top: 0;
+  height: 100%; width: 52%;
+  z-index: 0;
+}
+.scene-vignette {
+  position: absolute; inset: 0; z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 72% 50%, rgba(255,69,0,0.06) 0%, transparent 52%),
+    linear-gradient(to right, #0a0a0a 34%, transparent 62%, #0a0a0a 100%);
+}
+
+/* ── Responsive ── */
+
+/* Tablet */
+@media (max-width: 960px) {
+  .hero-visual-svg { width: 70%; opacity: 0.35; }
+  .scene-vignette {
+    background:
+      linear-gradient(to right, #0a0a0a 20%, rgba(10,10,10,0.7) 60%, #0a0a0a 100%),
+      linear-gradient(to bottom, rgba(10,10,10,0.5) 0%, transparent 30%, rgba(10,10,10,0.5) 100%);
+  }
+  .scene-content { max-width: 100%; padding-right: 3rem; }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  html, body, #root { overflow-y: auto; overflow-x: hidden; }
+  .scene-wrap {
+    position: relative;
+    min-height: 100dvh;
+    align-items: flex-start;
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+  }
+  .hero-visual-svg {
+    width: 100%; opacity: 0.12;
+    height: 50%;
+    top: 0;
+  }
+  .scene-vignette {
+    background: linear-gradient(to bottom, rgba(10,10,10,0.4) 0%, #0a0a0a 55%);
+  }
+  .scene-content {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    max-width: 100%;
+  }
+  .line-inner {
+    font-size: clamp(3rem, 17vw, 5.5rem) !important;
+  }
+  .scene-ecos-grid { gap: 6px !important; }
+  .scene-platform  { min-width: 76px !important; padding: 8px 10px !important; }
+}
+
+/* Very small */
+@media (max-width: 380px) {
+  .line-inner { font-size: clamp(2.6rem, 18vw, 4rem) !important; }
+  .scene-content { padding-left: 1rem; padding-right: 1rem; }
+}
