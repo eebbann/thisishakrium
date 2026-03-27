@@ -13,7 +13,7 @@ export default function App() {
       <Cursor />
       <Grain />
       <Particles active={preloadDone} />
-      <Preloader onComplete={() => setPreloadDone(true)} />
+      {!preloadDone && <Preloader onComplete={() => setPreloadDone(true)} />}
       <Scene play={preloadDone} />
     </>
   )

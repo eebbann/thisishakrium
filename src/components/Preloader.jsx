@@ -57,7 +57,7 @@ export default function Preloader({ onComplete }) {
         <div style={s.dotRow}>
           <span ref={dotRef} style={s.dot} />
         </div>
-        <img src={logoImg} alt="Hakrium" ref={logoRef} style={s.logoImg} />
+        <h1 ref={logoRef} style={s.logo}>THIS<span style={s.orange}>IS</span>HAKRIUM</h1>
         <p  ref={tagRef}  style={s.tag}>// INITIALISING PARENT PROTOCOL</p>
       </div>
 
@@ -103,13 +103,15 @@ const s = {
     background: '#ff4500',
     animation: 'pulse-dot 1.2s ease-in-out infinite',
   },
-  logoImg: {
-    height: 'clamp(52px, 8vw, 80px)',
-    width: 'auto',
-    objectFit: 'contain',
-    filter: 'brightness(1.05)',
-    marginBottom: 4,
+  logo: {
+    fontFamily: "'Barlow Condensed', sans-serif",
+    fontWeight: 900,
+    fontSize: 'clamp(2.2rem, 5vw, 4.5rem)',
+    letterSpacing: '0.12em',
+    color: '#f0f0ee',
+    textTransform: 'uppercase',
   },
+  orange: { color: '#ff4500' },
   tag: {
     fontFamily: "'Space Mono', monospace",
     fontSize: '0.65rem',

@@ -3,55 +3,54 @@ import { gsap } from 'gsap'
 import HeroVisual from './HeroVisual'
 import logoImg from '../assets/logo.png'
 
-const CA = '0x9a7ea44ba4eda152eb52522a095fbc98871f7777'
+const CA          = '0x9a7ea44ba4eda152eb52522a095fbc98871f7777'
+const PAIR_ADDR   = '0xc174bc50058487a5243e7beca4ed5e4fab448226'
 
 const LINKS = [
   {
-    label: 'X',
-    href: 'https://x.com/thishakrium',
+    label: 'X / TWITTER',
+    href: 'https://x.com/thisishakrium',
     icon: (
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
       </svg>
     ),
   },
   {
     label: 'GMGN',
-    href: `https://gmgn.ai/eth/token/${CA}`,
+    href: `https://gmgn.ai/bsc/token/${CA}`,
     icon: (
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <circle cx="12" cy="12" r="10"/>
-        <path d="M12 6v6l4 2"/>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/>
+        <path d="M16.5 3.5a9 9 0 0 1 0 17"/>
       </svg>
     ),
   },
   {
-    label: 'DEX',
-    href: `https://dexscreener.com/ethereum/${CA}`,
+    label: 'DEXSCREENER',
+    href: `https://dexscreener.com/bsc/${PAIR_ADDR}`,
     icon: (
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
         <polyline points="16 7 22 7 22 13"/>
       </svg>
     ),
   },
   {
-    label: 'SCAN',
-    href: `https://etherscan.io/token/${CA}`,
+    label: 'BSCSCAN',
+    href: `https://bscscan.com/token/${CA}`,
     icon: (
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <circle cx="11" cy="11" r="8"/>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
       </svg>
     ),
   },
   {
-    label: 'BUY',
-    href: `https://app.uniswap.org/explore/tokens/ethereum/${CA}`,
+    label: 'PANCAKESWAP',
+    href: `https://pancakeswap.finance/swap?outputCurrency=${CA}&chain=bsc`,
     icon: (
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
-        <path d="M8 12l4-4 4 4M12 8v8"/>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/>
       </svg>
     ),
   },
@@ -174,26 +173,21 @@ export default function Scene({ play }) {
             ))}
           </div>
         </div>
-
-        <div ref={ctaRef} style={s.ctaRow}>
-          <button data-cursor style={s.btnGhost}>Live soon ..</button>
-        </div>
+ 
 
       </div>
 
       {/* ── Bottom bar: contract + socials ── */}
       <div ref={bottomRef} style={s.bottomBar}>
 
-        {/* Contract address */}
-        <button onClick={copyCA} style={s.caBtn} title="Copy contract address">
-          <span style={s.caLabel}>CA</span>
-          <span style={s.caAddress}>
-            {CA.slice(0, 6)}…{CA.slice(-4)}
-          </span>
+        {/* Contract address — click to copy */}
+        <button onClick={copyCA} style={s.caBtn} title={copied ? 'Copied!' : 'Click to copy contract address'}>
+          <span style={s.caLabel}>{copied ? '✓ COPIED' : 'CA'}</span>
+          <span style={s.caAddress} className="ca-full">{CA}</span>
           <span style={s.caIcon}>
             {copied
-              ? <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#ff4500" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              : <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              ? <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ff4500" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              : <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
             }
           </span>
         </button>
@@ -234,7 +228,7 @@ const s = {
   scanlines: {
     position: 'absolute', inset: 0,
     background: 'repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.08) 2px,rgba(0,0,0,0.08) 4px)',
-    pointerEvents: 'none', zIndex: 4,
+    pointerEvents: 'none', zIndex: 3,
   },
 
   /* Logo top-left */
@@ -339,7 +333,7 @@ const s = {
     background: '#ff4500', animation: 'pulse-dot 1.2s ease-in-out infinite',
   },
 
-  ctaRow: { display: 'flex', gap: 12 },
+  ctaRow: { display: 'flex', gap: 12, marginBottom: 80 },
   btnGhost: {
     fontFamily: "'Space Mono', monospace",
     fontSize: '0.63rem', letterSpacing: '0.15em', textTransform: 'uppercase',
@@ -350,40 +344,42 @@ const s = {
 
   /* Bottom bar */
   bottomBar: {
-    position: 'absolute', bottom: 28, left: 'clamp(1.5rem, 5vw, 7rem)',
-    display: 'flex', alignItems: 'center', gap: 16,
+    position: 'absolute', bottom: 24, left: 'clamp(1.5rem, 5vw, 7rem)',
+    right: '2rem',
+    display: 'flex', alignItems: 'center', gap: 12,
     zIndex: 10, flexWrap: 'wrap',
   },
   caBtn: {
-    display: 'inline-flex', alignItems: 'center', gap: 7,
-    background: 'rgba(255,69,0,0.06)',
-    border: '1px solid rgba(255,69,0,0.2)',
-    padding: '6px 12px',
+    display: 'inline-flex', alignItems: 'center', gap: 8,
+    background: 'rgba(255,69,0,0.08)',
+    border: '1px solid rgba(255,69,0,0.4)',
+    padding: '8px 14px',
     cursor: 'pointer',
     color: 'inherit', outline: 'none',
-    transition: 'border-color 0.2s',
+    transition: 'background 0.2s, border-color 0.2s',
+    flexShrink: 0,
   },
   caLabel: {
     fontFamily: "'Space Mono', monospace",
-    fontSize: '0.5rem', letterSpacing: '0.18em',
-    color: '#ff4500',
+    fontSize: '0.55rem', letterSpacing: '0.2em',
+    color: '#ff4500', fontWeight: 700,
   },
   caAddress: {
     fontFamily: "'Space Mono', monospace",
-    fontSize: '0.5rem', letterSpacing: '0.06em',
-    color: 'rgba(240,240,238,0.45)',
+    fontSize: '0.52rem', letterSpacing: '0.05em',
+    color: 'rgba(240,240,238,0.65)',
   },
-  caIcon: { display: 'flex', alignItems: 'center', color: 'rgba(240,240,238,0.35)' },
-  divider: { width: 1, height: 20, background: 'rgba(240,240,238,0.1)' },
-  socials: { display: 'flex', alignItems: 'center', gap: 4 },
+  caIcon: { display: 'flex', alignItems: 'center', color: 'rgba(240,240,238,0.5)', marginLeft: 2 },
+  divider: { width: 1, height: 22, background: 'rgba(240,240,238,0.12)', flexShrink: 0 },
+  socials: { display: 'flex', alignItems: 'center', gap: 2, flexWrap: 'wrap' },
   socialLink: {
     display: 'inline-flex', alignItems: 'center', gap: 5,
-    padding: '6px 10px',
-    color: 'rgba(240,240,238,0.4)',
+    padding: '7px 10px',
+    color: 'rgba(240,240,238,0.5)',
     textDecoration: 'none',
     border: '1px solid transparent',
     transition: 'color 0.2s, border-color 0.2s',
-    cursor: 'none',
+    cursor: 'pointer',
   },
   socialLabel: {
     fontFamily: "'Space Mono', monospace",
