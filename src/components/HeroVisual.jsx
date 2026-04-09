@@ -5,9 +5,9 @@ const CX = 250, CY = 350
 
 const NODES = [
   { name: 'RAGE',  cx: 370, cy: 210, active: true  },
-  { name: 'NEXUS', cx: 430, cy: 360, active: false },
-  { name: 'VAULT', cx: 310, cy: 510, active: false },
-  { name: 'GRID',  cx: 130, cy: 420, active: false },
+  { name: 'BATA',  cx: 430, cy: 360, active: false },
+  { name: 'PULSE', cx: 310, cy: 510, active: false },
+  { name: 'VAULT', cx: 130, cy: 420, active: false },
 ]
 
 export default function HeroVisual({ play }) {

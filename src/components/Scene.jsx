@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import HeroVisual from './HeroVisual'
 import logoImg from '../assets/logo.png'
@@ -57,10 +58,12 @@ const LINKS = [
 ]
 
 const PLATFORMS = [
-  { name: 'RAGE',  status: 'LIVE',    active: true,  num: 1 },
-  { name: 'NEXUS', status: 'Q3 2026', active: false, num: 2 },
-  { name: 'VAULT', status: 'Q4 2026', active: false, num: 3 },
-  { name: 'GRID',  status: 'TBA',     active: false, num: 4 },
+  { name: 'RAGE',     status: 'LIVE',    active: true,  num: 1, color: '#ff4500' },
+  { name: 'BATA',     status: 'PHASE 1', active: false, num: 2, color: '#00c896' },
+  { name: 'PULSE',    status: 'PHASE 2', active: false, num: 3, color: '#4488ff' },
+  { name: 'VAULT',    status: 'PHASE 2', active: false, num: 4, color: '#ffaa00' },
+  { name: 'ECHO',     status: 'PHASE 3', active: false, num: 5, color: '#ff4488' },
+  { name: 'ARENA',    status: 'PHASE 3', active: false, num: 6, color: '#00ccbb' },
 ]
 
 export default function Scene({ play }) {
@@ -149,7 +152,7 @@ export default function Scene({ play }) {
         </p>
 
         <div ref={ecosRef} style={s.ecos}>
-          <span style={s.ecosLabel}>ECOSYSTEM</span>
+          <span style={s.ecosLabel}>ECOSYSTEM — PHASE 1 &amp; BEYOND</span>
           <div className="scene-ecos-grid" style={s.ecosGrid}>
             {PLATFORMS.map(p => (
               <div
@@ -157,23 +160,38 @@ export default function Scene({ play }) {
                 className="scene-platform"
                 style={{
                   ...s.platform,
-                  ...(p.active  ? s.platformActive : {}),
-                  ...(!p.active ? s.platformBlur   : {}),
+                  ...(p.active ? {
+                    border: `1px solid ${p.color}4d`,
+                    background: `${p.color}0d`,
+                    borderTop: `3px solid ${p.color}`,
+                  } : {}),
+                  ...(!p.active ? s.platformBlur : {}),
                 }}
               >
-                <span style={{ ...s.numBadge, ...(p.active ? s.numBadgeActive : {}) }}>
+                <span style={{
+                  ...s.numBadge,
+                  ...(p.active ? {
+                    color: p.color,
+                    background: `${p.color}1f`,
+                    border: `1px solid ${p.color}66`,
+                  } : {}),
+                }}>
                   #{p.num}
                 </span>
                 <span style={s.platformName}>{p.name}</span>
-                <span style={{ ...s.platformStatus, ...(p.active ? s.statusLive : {}) }}>
-                  {p.active && <span style={s.liveDot} />}
+                <span style={{ ...s.platformStatus, ...(p.active ? { color: p.color } : {}) }}>
+                  {p.active && <span style={{ ...s.liveDot, background: p.color }} />}
                   {p.status}
                 </span>
               </div>
             ))}
           </div>
         </div>
- 
+
+        <div ref={ctaRef} style={s.ctaRow}>
+          <Link to="/login" style={s.btnPrimary}>JOIN FREE</Link>
+          <Link to="/ecosystem" style={s.btnGhost}>EXPLORE →</Link>
+        </div>
 
       </div>
 
@@ -333,13 +351,23 @@ const s = {
     background: '#ff4500', animation: 'pulse-dot 1.2s ease-in-out infinite',
   },
 
-  ctaRow: { display: 'flex', gap: 12, marginBottom: 80 },
+  ctaRow: { display: 'flex', gap: 12, marginBottom: 80, flexWrap: 'wrap' },
+  btnPrimary: {
+    fontFamily: "'Space Mono', monospace",
+    fontSize: '0.63rem', letterSpacing: '0.2em', textTransform: 'uppercase',
+    background: '#ff4500', color: '#0a0a0a', fontWeight: 700,
+    textDecoration: 'none',
+    padding: '13px 28px', display: 'inline-flex', alignItems: 'center',
+    transition: 'background 0.15s',
+  },
   btnGhost: {
     fontFamily: "'Space Mono', monospace",
     fontSize: '0.63rem', letterSpacing: '0.15em', textTransform: 'uppercase',
     color: 'rgba(240,240,238,0.65)', background: 'transparent',
     border: '1px solid rgba(240,240,238,0.18)',
-    padding: '12px 26px', cursor: 'none', transition: 'border-color 0.2s',
+    textDecoration: 'none',
+    padding: '13px 26px', display: 'inline-flex', alignItems: 'center',
+    transition: 'border-color 0.2s',
   },
 
   /* Bottom bar */

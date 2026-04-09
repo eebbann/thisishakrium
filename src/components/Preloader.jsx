@@ -32,12 +32,12 @@ export default function Preloader({ onComplete }) {
       .to(logoRef.current,    { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.1')
       .to(tagRef.current,     { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' }, '-=0.3')
       .to(counterRef.current, { opacity: 1, duration: 0.3 }, '-=0.2')
-      .to(barRef.current,     { scaleX: 1, duration: 1.9, ease: 'power2.inOut' }, '-=0.1')
+      .to(barRef.current,     { scaleX: 1, duration: 0.8, ease: 'power2.inOut' }, '-=0.1')
       .to(counterRef.current, {
           innerText: 100,
           snap: { innerText: 1 },
           suffix: '%',
-          duration: 1.9,
+          duration: 0.8,
           ease: 'power2.inOut',
         }, '<')
       .to([logoRef.current, tagRef.current], {
@@ -47,6 +47,7 @@ export default function Preloader({ onComplete }) {
           ease: 'power2.in',
         }, '+=0.2')
   }, [onComplete])
+	
 
   return (
     <div ref={wrapRef} style={s.wrap}>
