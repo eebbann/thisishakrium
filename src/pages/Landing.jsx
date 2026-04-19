@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Scene from '../components/Scene'
+import Nav from '../components/Nav'
 
 const PLATFORMS = [
   { name: 'RAGE',  phase: '01', status: 'LIVE',    color: '#ff4500', desc: 'Anonymous opinions. Post, tip, react — no attribution.' },
@@ -28,8 +29,11 @@ export default function Landing({ play }) {
   return (
     <div style={{ background: '#0a0a0a', color: '#f0f0ee' }}>
 
+      {/* ── Nav ── */}
+      <Nav />
+
       {/* ── Hero ── */}
-      <div style={{ position: 'relative', height: '100dvh', overflow: 'hidden' }}>
+      <div style={{ position: 'relative', height: 'calc(100dvh - 58px)', overflow: 'hidden' }}>
         <Scene play={play} />
       </div>
 
@@ -221,18 +225,18 @@ const s = {
   section:   { padding: '96px 0' },
   container: { maxWidth: 1200, margin: '0 auto', padding: '0 clamp(1.5rem,4vw,3rem)' },
   kicker: {
-    fontFamily: "'Space Mono', monospace",
+    fontFamily: "'Fragment Mono', monospace",
     fontSize: '0.62rem', letterSpacing: '0.22em',
     color: '#ff4500', display: 'block', marginBottom: 18,
   },
   h2: {
-    fontFamily: "'Barlow Condensed', sans-serif",
+    fontFamily: "'Bebas Neue', sans-serif",
     fontWeight: 900, fontSize: 'clamp(2.2rem,5vw,4.2rem)',
     letterSpacing: '-0.01em', textTransform: 'uppercase',
     color: '#f0f0ee', marginBottom: 20, lineHeight: 1,
   },
   sub: {
-    fontFamily: "'Inter', sans-serif",
+    fontFamily: "'Space Grotesk', sans-serif",
     fontWeight: 300, fontSize: '1rem',
     color: 'rgba(240,240,238,0.55)', lineHeight: 1.8,
     marginBottom: 40, maxWidth: 560,
@@ -251,13 +255,13 @@ const s = {
     transition: 'background 0.2s',
   },
   phaseTag: {
-    fontFamily: "'Space Mono', monospace",
+    fontFamily: "'Fragment Mono', monospace",
     fontSize: '0.52rem', letterSpacing: '0.1em',
     border: '1px solid', borderRadius: 2,
     padding: '2px 8px',
   },
   pill: {
-    fontFamily: "'Space Mono', monospace",
+    fontFamily: "'Fragment Mono', monospace",
     fontSize: '0.5rem', letterSpacing: '0.1em',
     border: '1px solid', padding: '3px 9px',
     display: 'flex', alignItems: 'center', gap: 5,
@@ -267,12 +271,12 @@ const s = {
     animation: 'pulse-dot 1.2s ease-in-out infinite',
   },
   platformName: {
-    fontFamily: "'Barlow Condensed', sans-serif",
+    fontFamily: "'Bebas Neue', sans-serif",
     fontWeight: 900, fontSize: '1.6rem', letterSpacing: '0.04em',
     marginBottom: 8,
   },
   platformDesc: {
-    fontFamily: "'Inter', sans-serif",
+    fontFamily: "'Space Grotesk', sans-serif",
     fontWeight: 300, fontSize: '0.87rem',
     color: 'rgba(240,240,238,0.48)', lineHeight: 1.7,
   },
@@ -293,12 +297,12 @@ const s = {
     display: 'flex', flexDirection: 'column', gap: 4,
   },
   statVal: {
-    fontFamily: "'Barlow Condensed', sans-serif",
+    fontFamily: "'Bebas Neue', sans-serif",
     fontWeight: 700, fontSize: '1.3rem',
     color: '#f0f0ee',
   },
   statLabel: {
-    fontFamily: "'Space Mono', monospace",
+    fontFamily: "'Fragment Mono', monospace",
     fontSize: '0.52rem', letterSpacing: '0.1em',
     color: 'rgba(240,240,238,0.35)',
   },
@@ -321,11 +325,11 @@ const s = {
     gap: 4,
   },
   coinTicker: {
-    fontFamily: "'Barlow Condensed', sans-serif",
+    fontFamily: "'Bebas Neue', sans-serif",
     fontWeight: 900, fontSize: '2.4rem', letterSpacing: '0.1em', color: '#ff4500',
   },
   coinChain: {
-    fontFamily: "'Space Mono', monospace",
+    fontFamily: "'Fragment Mono', monospace",
     fontSize: '0.44rem', letterSpacing: '0.2em',
     color: 'rgba(255,69,0,0.6)',
   },
@@ -350,37 +354,37 @@ const s = {
     borderRadius: 10, padding: '24px',
   },
   tierNum: {
-    fontFamily: "'Space Mono', monospace",
+    fontFamily: "'Fragment Mono', monospace",
     fontSize: '0.5rem', letterSpacing: '0.2em',
     display: 'block', marginBottom: 8,
   },
   tierName: {
-    fontFamily: "'Barlow Condensed', sans-serif",
+    fontFamily: "'Bebas Neue', sans-serif",
     fontWeight: 900, fontSize: '1.6rem', letterSpacing: '0.04em',
     marginBottom: 16,
   },
   tierRows: { display: 'flex', flexDirection: 'column', gap: 8 },
   tierRow: { display: 'flex', justifyContent: 'space-between', alignItems: 'center' },
   tierRowL: {
-    fontFamily: "'Space Mono', monospace",
+    fontFamily: "'Fragment Mono', monospace",
     fontSize: '0.52rem', letterSpacing: '0.08em',
     color: 'rgba(240,240,238,0.35)',
   },
   tierRowR: {
-    fontFamily: "'Space Mono', monospace",
+    fontFamily: "'Fragment Mono', monospace",
     fontSize: '0.56rem', letterSpacing: '0.05em',
     color: 'rgba(240,240,238,0.7)',
   },
 
   orangeBtn: {
-    fontFamily: "'Space Mono', monospace",
+    fontFamily: "'Fragment Mono', monospace",
     fontSize: '0.62rem', letterSpacing: '0.2em',
     background: '#ff4500', color: '#0a0a0a', fontWeight: 700,
     textDecoration: 'none', display: 'inline-flex', alignItems: 'center',
     padding: '13px 28px',
   },
   outlineBtn: {
-    fontFamily: "'Space Mono', monospace",
+    fontFamily: "'Fragment Mono', monospace",
     fontSize: '0.62rem', letterSpacing: '0.2em',
     background: 'transparent', color: 'rgba(240,240,238,0.7)',
     border: '1px solid rgba(240,240,238,0.2)',
@@ -398,24 +402,24 @@ const s = {
     alignItems: 'start', gap: 32, marginBottom: 32,
   },
   footerBrand: {
-    fontFamily: "'Barlow Condensed', sans-serif",
+    fontFamily: "'Bebas Neue', sans-serif",
     fontWeight: 900, fontSize: '1.2rem', letterSpacing: '0.1em',
     color: '#f0f0ee', marginBottom: 6,
   },
   footerTagline: {
-    fontFamily: "'Space Mono', monospace",
+    fontFamily: "'Fragment Mono', monospace",
     fontSize: '0.5rem', letterSpacing: '0.18em',
     color: 'rgba(240,240,238,0.25)',
   },
   footerLinks: { display: 'flex', gap: 4, flexWrap: 'wrap', justifyContent: 'center' },
   footerLink: {
-    fontFamily: "'Space Mono', monospace",
+    fontFamily: "'Fragment Mono', monospace",
     fontSize: '0.52rem', letterSpacing: '0.12em',
     color: 'rgba(240,240,238,0.35)', textDecoration: 'none',
     padding: '4px 8px',
   },
   footerMeta: {
-    fontFamily: "'Space Mono', monospace",
+    fontFamily: "'Fragment Mono', monospace",
     fontSize: '0.48rem', letterSpacing: '0.1em',
     color: 'rgba(240,240,238,0.22)', display: 'block', marginBottom: 4,
   },

@@ -13,6 +13,7 @@
 | 1 | Three overlapping entry points — `/login`, `/join`, `/restore` — each with duplicated logic | Decision fatigue, maintainability hell |
 | 2 | Nav "JOIN" and "SIGN IN" both pointed to `/login` without specifying intent | Wrong tab shown, friction on first touch |
 | 3 | Landing "CREATE ACCOUNT" CTA went to `/login` without tab context | New users landed on Restore tab |
+
 | 4 | Preloader animation ran 1.9 seconds — full blocking wall before any content | Drop-off, feels slow on YC demo |
 | 5 | After signup: `/join` page redirected to `/wallet`, `/login` tab redirected to `/@alias` | Inconsistent post-signup destination |
 | 6 | No clear "what do I do now" moment after signup | Users saw wallet balance but had no obvious next action |
